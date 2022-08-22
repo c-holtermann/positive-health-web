@@ -8,3 +8,5 @@ Conversion to svg:
 ``` bash
 inkscape --without-gui --file=web_only.pdf --export-plain-svg=web_only.svg
 ```
+
+![Positive health web](https://github.com/c-holtermann/positive-health-web/blob/main/web_only.svg)
