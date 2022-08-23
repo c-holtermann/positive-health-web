@@ -46,7 +46,7 @@
     \pgfmathtruncatemacro{\YC}{\Y*\G}
     \pgfmathsetmacro{\YG}{\Y*\G+1}
 
-    \path (1*\A+\anglebase:\labelangle) node[label, xshift=-0.6cm, align=right] {\YC};
+    \path (1*\A+\anglebase:\labelangle) node[label, xshift=-0.65cm, yshift=-0.1cm, align=right] {\YC};
     \draw [opacity=0.3] (\anglebase:\Y*\G*\R/\U) \foreach \X in {1,...,\D}{
         -- (\AX:\Y*\G*\R/\U)
     } -- cycle;
