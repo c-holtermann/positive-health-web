@@ -18,3 +18,7 @@ inkscape --pdf-poppler "`pwd`/web_only.pdf" -o "`pwd`/web_only.svg"
 Resulting image:
 
 ![Positive health web](https://github.com/c-holtermann/positive-health-web/blob/main/web_only.svg)
+
+German:
+
+![Positive health web german](https://github.com/c-holtermann/positive-health-web/blob/main/web_only_de.svg)
