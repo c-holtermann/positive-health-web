@@ -6,13 +6,14 @@ Adapted from https://texample.net/tikz/examples/spiderweb-diagram/
 
 Create pdf:
 ``` bash
-latex --output-format=pdf web_only.tex 
+latex --output-format=pdf web_only.tex
 ```
 
 Conversion to svg:
 ``` bash
-inkscape --without-gui --file=web_only.pdf --export-plain-svg=web_only.svg
+inkscape --pdf-poppler "`pwd`/web_only.pdf" -o "`pwd`/web_only.svg"
 ```
+(using inkscape 1.2.1 from snap on Ubuntu, text converted to curves)
 
 Resulting image:
 
