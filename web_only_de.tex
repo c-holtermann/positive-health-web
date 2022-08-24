@@ -1,0 +1,67 @@
+% Spiderweb Diagram
+%
+% Author: Dominik Renzel
+% Author: Christoph Holtermann
+% Date; 2009-11-11
+% Date; 2022-08-22 modified for positive health
+\documentclass[varwidth=80cm]{standalone}
+\usepackage{tikz, calc}
+\usetikzlibrary{shapes}
+
+\begin{document}
+
+\newcommand{\D}{6} % number of dimensions (config option)
+\newcommand{\U}{10} % number of scale units (config option)
+\newcommand{\G}{2} % only show every nth web row
+\pgfmathtruncatemacro{\UG}{\U/\G} % number of web rows
+
+\newdimen\R % maximal diagram radius (config option)
+\R=3.5cm 
+\newdimen\L % radius to put dimension labels (config option)
+\L=4.4cm
+
+\newcommand{\A}{360/\D} % calculated angle between dimension axes
+\newcommand{\anglebase}{\A/2}
+\newcommand{\AX}{\X*\A+\anglebase} % calculate angles so that one spike shows down
+\newcommand{\labelangle}{\YG*\R/\U}
+
+\begin{figure}[htbp]
+ \centering
+
+\begin{tikzpicture}[scale=1]
+  \tikzstyle{labelText} = [align=center, font=\small]
+  \tikzstyle{labelNumber} = [align=right, text width=1em, font=\small]
+  \path (0:0cm) coordinate (O); % define coordinate for origin
+
+  % draw the spiderweb
+  \foreach \X in {1,...,\D}{
+    \draw (\AX:0) -- (\AX:\R);
+  }
+
+  \foreach \Y in {0,...,\UG}{
+    \foreach \X in {1,...,\D}{
+      \path (\AX:\Y*\G*\R/\U) coordinate (D\X-\Y*\G);
+      \fill (D\X-\Y*\G) circle (1pt);
+    }
+
+    \pgfmathtruncatemacro{\YC}{\Y*\G}
+    \pgfmathsetmacro{\YG}{\Y*\G+1}
+
+    \path (1*\A+\anglebase:\labelangle) node[labelNumber, align=right, xshift=0.05cm, yshift=-0.05cm] {\YC};
+    \draw [opacity=0.3] (\anglebase:\Y*\G*\R/\U) \foreach \X in {1,...,\D}{
+        -- (\AX:\Y*\G*\R/\U)
+    } -- cycle;
+  }
+
+  % define labels for each dimension axis (names config option)
+  \path (1*\A+\anglebase:\L) node[labelText] (L1) {Körperliche\\Funktionsfähigkeit};
+  \path (2*\A+\anglebase:\L) node[labelText] (L2) {Mentale Funktionsfähigkeit\\und Wahrnehmung};
+  \path (3*\A+\anglebase:\L) node[labelText] (L3) {Spirituelle/existenzielle\\Dimension};
+  \path (4*\A+\anglebase:\L) node[labelText] (L4) {Lebensqualität};
+  \path (5*\A+\anglebase:\L) node[labelText] (L5) {Soziale \& gesellschaftliche\\Teilhabe};
+  \path (6*\A+\anglebase:\L) node[labelText] (L6) {Alltägliche\\Funktionsfähigkeit};
+
+\end{tikzpicture}
+\end{figure}
+
+\end{document}
